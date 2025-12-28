@@ -7,23 +7,24 @@ interface Props {
   onDecrement: () => void;
 }
 
+// src/components/QuantityCounter.tsx
 const QuantityCounter = ({ count, onIncrement, onDecrement }: Props) => {
   return (
-    <div className="flex items-center justify-center space-x-4 bg-amber-50 rounded-full py-2 px-4 border border-amber-200">
+    <div className="inline-flex items-center bg-stone-50 rounded-2xl p-1 border border-stone-100">
       <button 
         onClick={onDecrement}
-        className="text-amber-900 font-bold text-xl hover:text-amber-600 transition-colors w-6"
+        className="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-white hover:shadow-sm text-stone-400 hover:text-stone-800 transition-all"
       >
         −
       </button>
       
-      <span className="text-lg font-semibold text-amber-900 w-6 text-center">
+      <span className="w-10 text-center font-medium text-stone-800">
         {count}
       </span>
 
       <button 
         onClick={onIncrement}
-        className="text-amber-900 font-bold text-xl hover:text-amber-600 transition-colors w-6"
+        className="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-white hover:shadow-sm text-stone-400 hover:text-stone-800 transition-all"
       >
         +
       </button>
