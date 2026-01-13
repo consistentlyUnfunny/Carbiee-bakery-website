@@ -5,18 +5,22 @@ import Footer from './components/footer';
 import HomePage from './pages/HomePage';
 import MenuPage from './pages/MenuPage';
 import './App.css';
+import './App.css';
 
 function App() {
   return (
     <Router>
       <div className="flex flex-col min-h-screen bg-amber-50">
         <Navbar />
+        
         <main className="flex-grow container mx-auto p-8">
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            {/* Setting the root path to MenuPage */}
+            <Route path="/" element={<MenuPage />} />
             <Route path="/menu" element={<MenuPage />} />
           </Routes>
         </main>
+        
         <Footer />
       </div>
     </Router>
