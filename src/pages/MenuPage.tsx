@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { BREAD_MENU } from '../menuData';
-import QuantityCounter from '../components/QuantityCounter';
+// import QuantityCounter from '../components/QuantityCounter'; // Commented out for future V2 use
 
 const MenuPage = () => {
   // Your Google Form URL for V2 ordering
   const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSeveHun2VawlYRo1XQjaiCDjWSK6Gd7VffKIbJt5cq1RmT8-A/viewform?usp=header";
 
+  /* commented for future use
+  
   // State to hold all quantities: { [id]: quantity }
   const [quantities, setQuantities] = useState<{ [key: number]: number }>(
     Object.fromEntries(BREAD_MENU.map(item => [item.id, 0]))
@@ -23,9 +25,10 @@ const MenuPage = () => {
   const totalPrice = BREAD_MENU.reduce((acc, item) => {
     return acc + (item.price * (quantities[item.id] || 0));
   }, 0);
+  */
 
   return (
-    <div className="pb-80 bg-[#FAF9F6]"> {/* Cozy off-white background and deep bottom padding */}
+    <div className="pb-24 bg-[#FAF9F6]"> {/* Reduced padding since the floating bar is removed */}
       
       {/* Header Section */}
       <div className="text-center mb-16 pt-8">
@@ -73,7 +76,7 @@ const MenuPage = () => {
                 {item.description}
               </p>
               
-              {/* Counter Section */}
+              {/* COUNTER SECTION - COMMENTED OUT FOR VIEW-ONLY VERSION
               <div className="mt-8 flex flex-col items-center">
                 <QuantityCounter 
                   count={quantities[item.id] || 0}
@@ -81,12 +84,34 @@ const MenuPage = () => {
                   onDecrement={() => updateQuantity(item.id, -1)}
                 />
               </div>
+              */}
             </div>
           </div>
         ))}
       </div>
 
-      {/* Floating Modern Checkout Bar */}
+      {/* NEW: Static Call-to-Action Section at the Bottom */}
+      <div className="mt-20 text-center">
+        <div className="max-w-xl mx-auto px-6">
+          <p className="text-stone-400 text-sm italic mb-6">
+            Ready to taste our handcrafted breads? <br/>
+            Click below to place your order via our official form.
+          </p>
+          <a 
+            href={formUrl}
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="bg-stone-900 text-amber-50 py-5 px-12 rounded-[2rem] font-bold text-lg uppercase tracking-widest hover:bg-stone-800 transition-all duration-300 shadow-xl hover:scale-105 inline-block"
+          >
+            Place Your Order
+          </a>
+          <p className="mt-8 text-[11px] text-stone-400 leading-relaxed italic font-light">
+            * Our team will contact you via WhatsApp once the form is submitted to finalize payment and delivery.
+          </p>
+        </div>
+      </div>
+
+      {/* FLOATING CHECKOUT BAR - COMMENTED OUT FOR VIEW-ONLY VERSION
       <div className="fixed bottom-10 left-1/2 -translate-x-1/2 w-[92%] max-w-2xl z-50">
         <div className="bg-stone-900/90 backdrop-blur-3xl text-white p-7 rounded-[2.8rem] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] border border-white/10">
           <div className="flex justify-between items-center mb-5">
@@ -114,7 +139,6 @@ const MenuPage = () => {
             </a>
           </div>
           
-          {/* Disclaimer / Notes Section */}
           <div className="px-3 pt-4 border-t border-white/5">
             <p className="text-[11px] text-stone-500 leading-relaxed italic font-light text-center">
               * Total price is for reference only. Please confirm your final selection in the Google Form. 
@@ -123,6 +147,7 @@ const MenuPage = () => {
           </div>
         </div>
       </div>
+      */}
     </div>
   );
 };
